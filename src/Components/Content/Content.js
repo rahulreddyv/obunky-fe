@@ -3,6 +3,7 @@ import { Row, Col } from 'antd';
 import FlatList from '../FlatList/FlatList';
 import FlatDetail from '../FlatDetail/FlatDetail';
 import FlatNewForm from '../FlatNewForm/FlatNewForm';
+import FlatPreview from '../FlatPreview/FlatPreview';
 
 export default class SimpleContent extends Component {
   state = {
@@ -22,10 +23,10 @@ export default class SimpleContent extends Component {
       </Row>
       <Row>
         <Col className="gutter-row" span={12}>
-          <FlatNewForm form=""/>
+          <FlatNewForm />
         </Col>
         <Col className="gutter-row" span={12}>
-          <p>Random</p>
+          <FlatPreview />
         </Col>
       </Row>
       </div>

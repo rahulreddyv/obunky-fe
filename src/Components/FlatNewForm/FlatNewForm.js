@@ -7,7 +7,6 @@ const FormItem = Form.Item;
 export default class FlatList extends Component {
   render() {
     const RadioGroup = Radio.Group;
-    const { getFieldDecorator } = this.props.form;
     const formItemLayout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 14 },
@@ -39,7 +38,7 @@ export default class FlatList extends Component {
       {...formItemLayout}
       label="Select BHK"
     >
-      <RadioGroup>
+      <RadioGroup buttonStyle="solid">
         <Radio value="a">1 RK</Radio>
         <Radio value="b">1 BHK</Radio>
         <Radio value="c">2 BHK</Radio>
