@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import SimpleContent from './Content/Content';
+import { NavLink, Link } from 'react-router-dom';
 import './MainLayout.css';
 
 const { Header, Sider, Content } = Layout;
@@ -34,11 +35,11 @@ export default class MainLayout extends Component {
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <Menu.Item key="1">
               <Icon type="user" />
-              <span>Nav 1</span>
+              <span><Link to="/">Nav 1</Link></span>
             </Menu.Item>
             <Menu.Item key="2">
               <Icon type="video-camera" />
-              <span>Nav 2</span>
+              <span><Link to="/">Nav 2</Link></span>
             </Menu.Item>
             <Menu.Item key="3">
               <Icon type="upload" />
@@ -56,9 +57,9 @@ export default class MainLayout extends Component {
                 lineHeight: '64px'
               }}
             >
-              <Menu.Item key="1">Nav 1</Menu.Item>
-              <Menu.Item key="2">Nav 2</Menu.Item>
-              <Menu.Item key="3">Nav 3</Menu.Item>
+              <Menu.Item key="1"><NavLink to="/" activeClassName="is-active" exact={true}>Property List</NavLink></Menu.Item>
+              <Menu.Item key="2"><NavLink to="/addProperty" activeClassName="is-active" exact={true}>New Property</NavLink></Menu.Item>
+              <Menu.Item key="3"><NavLink to="/" activeClassName="is-active">Nav 3</NavLink></Menu.Item>
             </Menu>
           </Header>
           <Content style={{ margin: '24px 16px', padding: 24, minHeight: 280 }}>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, InputNumber, Radio, Button, DatePicker} from 'antd';
+import { Form, Input, Radio, Button, DatePicker} from 'antd';
 import './FlatNewForm.css';
 
 const FormItem = Form.Item;

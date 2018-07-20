@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'antd';
-import FlatList from '../FlatList/FlatList';
-import FlatDetail from '../FlatDetail/FlatDetail';
-import FlatNewForm from '../FlatNewForm/FlatNewForm';
-import FlatPreview from '../FlatPreview/FlatPreview';
+import { Route } from 'react-router-dom'
+import Dashboard from '../Dashboard/Dashboard';
+import AddProperty from '../AddProperty/AddProperty';
 
 export default class SimpleContent extends Component {
   state = {
@@ -13,23 +11,9 @@ export default class SimpleContent extends Component {
   render() {
     return (
       <div>
-      <Row gutter={16}>
-        <Col className="gutter-row" span={12}>
-          <FlatList />
-        </Col>
-        <Col className="gutter-row" span={12}>
-          <FlatDetail />
-        </Col>
-      </Row>
-      <Row>
-        <Col className="gutter-row" span={12}>
-          <FlatNewForm />
-        </Col>
-        <Col className="gutter-row" span={12}>
-          <FlatPreview />
-        </Col>
-      </Row>
-      </div>
+        <Route path="/" component={Dashboard} exact={true}/>
+        <Route path="/addProperty" component={AddProperty} exact={true}/>
+      </div> 
     );
   }
 }
