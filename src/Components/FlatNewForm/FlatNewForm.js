@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
+import { Tabs } from 'antd';
 import { Form, Input, Radio, Button, DatePicker} from 'antd';
 import './FlatNewForm.css';
+
 
 const FormItem = Form.Item;
 
 export default class FlatList extends Component {
   render() {
     const RadioGroup = Radio.Group;
+    const TabPane = Tabs.TabPane;
+
     const formItemLayout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 14 },
     };
     return (
+      <Tabs defaultActiveKey="1">
+      <TabPane tab="Tab 1">
       <Form>
         <FormItem
           {...formItemLayout}
@@ -100,6 +106,8 @@ export default class FlatList extends Component {
       <Button>Continue</Button>
     </FormItem>
   </Form>
+  </TabPane>
+  </Tabs>
     );
   }
 }

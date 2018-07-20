@@ -12,12 +12,12 @@ export default class AddProperty extends Component {
         return(
             <div>
                 <Row>
-                <Col className="gutter-row" span={12}>
-                    <FlatNewForm />
-                </Col>
-                <Col className="gutter-row" span={12}>
-                    <FlatPreview />
-                </Col>
+                    <Col className="gutter-row" span={12}>
+                        <FlatNewForm />
+                    </Col>
+                    <Col className="gutter-row" span={12}>
+                        <FlatPreview />
+                    </Col>
                 </Row>
             </div>
         );
