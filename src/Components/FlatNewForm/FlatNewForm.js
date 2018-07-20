@@ -10,6 +10,7 @@ export default class FlatList extends Component {
   render() {
     const RadioGroup = Radio.Group;
     const TabPane = Tabs.TabPane;
+    const RadioButton = Radio.Button
 
     const formItemLayout = {
       labelCol: { span: 6 },
@@ -24,8 +25,8 @@ export default class FlatList extends Component {
               label="I want to"
             >
               <RadioGroup>
-                <Radio value="a">Rent</Radio>
-                <Radio value="b">Sell</Radio>
+                <RadioButton value="a">Rent</RadioButton>
+                <RadioButton value="b">Sell</RadioButton>
               </RadioGroup>
           </FormItem>
 
@@ -34,9 +35,9 @@ export default class FlatList extends Component {
             label="Property Type"
           >
             <RadioGroup>
-              <Radio value="a">Apartment</Radio>
-              <Radio value="b">Independent House</Radio>
-              <Radio value="c">Independent Floor</Radio>
+              <RadioButton value="a">Apartment</RadioButton>
+              <RadioButton value="b">Independent House</RadioButton>
+              <RadioButton value="c">Independent Floor</RadioButton>
             </RadioGroup>
         </FormItem>
 
@@ -45,13 +46,13 @@ export default class FlatList extends Component {
           label="Select BHK"
         >
           <RadioGroup buttonStyle="solid">
-            <Radio value="a">1 RK</Radio>
-            <Radio value="b">1 BHK</Radio>
-            <Radio value="c">2 BHK</Radio>
-            <Radio value="d">3 BHK</Radio>
-            <Radio value="e">4 BHK</Radio>
-            <Radio value="f">5 BHK</Radio>
-            <Radio value="g">5+ BHK</Radio>
+            <RadioButton value="a">1 RK</RadioButton>
+            <RadioButton value="b">1 BHK</RadioButton>
+            <RadioButton value="c">2 BHK</RadioButton>
+            <RadioButton value="d">3 BHK</RadioButton>
+            <RadioButton value="e">4 BHK</RadioButton>
+            <RadioButton value="f">5 BHK</RadioButton>
+            <RadioButton value="g">5+ BHK</RadioButton>
           </RadioGroup>
         </FormItem>
 
@@ -60,9 +61,9 @@ export default class FlatList extends Component {
           label="Furnished"
         >
           <RadioGroup>
-            <Radio value="a">Fully Furnished</Radio>
-            <Radio value="b">Semi Furnished</Radio>
-            <Radio value="c">Unfurnished</Radio>
+            <RadioButton value="a">Fully Furnished</RadioButton>
+            <RadioButton value="b">Semi Furnished</RadioButton>
+            <RadioButton value="c">Unfurnished</RadioButton>
           </RadioGroup>
         </FormItem>
 
@@ -92,10 +93,10 @@ export default class FlatList extends Component {
           label="Sharing Type"
         >
 			<RadioGroup>
-				<Radio value="a">Single Sharing</Radio>
-				<Radio value="b">Double Sharing</Radio>
-				<Radio value="c">Triple Sharing</Radio>
-				<Radio value="c">Four Sharing</Radio>
+				<RadioButton value="a">Single Sharing</RadioButton>
+				<RadioButton value="b">Double Sharing</RadioButton>
+				<RadioButton value="c">Triple Sharing</RadioButton>
+				<RadioButton value="c">Four Sharing</RadioButton>
 			</RadioGroup>
         </FormItem>
 
