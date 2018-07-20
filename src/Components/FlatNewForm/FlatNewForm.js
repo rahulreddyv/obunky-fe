@@ -17,96 +17,101 @@ export default class FlatList extends Component {
     };
     return (
       <Tabs defaultActiveKey="1">
-      <TabPane tab="Tab 1">
-      <Form>
+        <TabPane tab="Tab 1" key="1">
+          <Form>
+            <FormItem
+              {...formItemLayout}
+              label="I want to"
+            >
+              <RadioGroup>
+                <Radio value="a">Rent</Radio>
+                <Radio value="b">Sell</Radio>
+              </RadioGroup>
+          </FormItem>
+
+          <FormItem
+            {...formItemLayout}
+            label="Property Type"
+          >
+            <RadioGroup>
+              <Radio value="a">Apartment</Radio>
+              <Radio value="b">Independent House</Radio>
+              <Radio value="c">Independent Floor</Radio>
+            </RadioGroup>
+        </FormItem>
+
         <FormItem
           {...formItemLayout}
-          label="I want to"
+          label="Select BHK"
+        >
+          <RadioGroup buttonStyle="solid">
+            <Radio value="a">1 RK</Radio>
+            <Radio value="b">1 BHK</Radio>
+            <Radio value="c">2 BHK</Radio>
+            <Radio value="d">3 BHK</Radio>
+            <Radio value="e">4 BHK</Radio>
+            <Radio value="f">5 BHK</Radio>
+            <Radio value="g">5+ BHK</Radio>
+          </RadioGroup>
+        </FormItem>
+
+        <FormItem
+          {...formItemLayout}
+          label="Furnished"
         >
           <RadioGroup>
-            <Radio value="a">Rent</Radio>
-            <Radio value="b">Sell</Radio>
+            <Radio value="a">Fully Furnished</Radio>
+            <Radio value="b">Semi Furnished</Radio>
+            <Radio value="c">Unfurnished</Radio>
           </RadioGroup>
-      </FormItem>
+        </FormItem>
 
-      <FormItem
-        {...formItemLayout}
-        label="Property Type"
-      >
-        <RadioGroup>
-          <Radio value="a">Apartment</Radio>
-          <Radio value="b">Independent House</Radio>
-          <Radio value="c">Independent Floor</Radio>
-        </RadioGroup>
-    </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="Available From"
+        >
+          <DatePicker />
+        </FormItem>
 
-    <FormItem
-      {...formItemLayout}
-      label="Select BHK"
-    >
-      <RadioGroup buttonStyle="solid">
-        <Radio value="a">1 RK</Radio>
-        <Radio value="b">1 BHK</Radio>
-        <Radio value="c">2 BHK</Radio>
-        <Radio value="d">3 BHK</Radio>
-        <Radio value="e">4 BHK</Radio>
-        <Radio value="f">5 BHK</Radio>
-        <Radio value="g">5+ BHK</Radio>
-      </RadioGroup>
-    </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="Monthly Rent"
+        >
+          <Input />
+        </FormItem>
 
-    <FormItem
-      {...formItemLayout}
-      label="Furnished"
-    >
-      <RadioGroup>
-        <Radio value="a">Fully Furnished</Radio>
-        <Radio value="b">Semi Furnished</Radio>
-        <Radio value="c">Unfurnished</Radio>
-      </RadioGroup>
-    </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="Security Deposit"
+        >
+          <Input />
+        </FormItem>
 
-    <FormItem
-      {...formItemLayout}
-      label="Available From"
-    >
-      <DatePicker />
-    </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="Sharing Type"
+        >
+			<RadioGroup>
+				<Radio value="a">Single Sharing</Radio>
+				<Radio value="b">Double Sharing</Radio>
+				<Radio value="c">Triple Sharing</Radio>
+				<Radio value="c">Four Sharing</Radio>
+			</RadioGroup>
+        </FormItem>
 
-    <FormItem
-      {...formItemLayout}
-      label="Monthly Rent"
-    >
-      <Input />
-    </FormItem>
-
-    <FormItem
-      {...formItemLayout}
-      label="Security Deposit"
-    >
-      <Input />
-    </FormItem>
-
-    <FormItem
-      {...formItemLayout}
-      label="Brokerage"
-    >
-      <Input />
-    </FormItem>
-
-    <FormItem
-      {...formItemLayout}
-      label="Built Up Area"
-    >
-      <Input />
-    </FormItem>
-    <FormItem
-      {...formItemLayout}
-    >
-      <Button>Continue</Button>
-    </FormItem>
-  </Form>
-  </TabPane>
+        <FormItem
+          {...formItemLayout}
+          label="Built Up Area"
+        >
+          <Input />
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+        >
+          <Button>Continue</Button>
+        </FormItem>
+      </Form>
+    </TabPane>
   </Tabs>
     );
   }

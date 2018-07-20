@@ -57,7 +57,7 @@ export default class MainLayout extends Component {
                 lineHeight: '64px'
               }}
             >
-              <Menu.Item key="1"><NavLink to="/" activeClassName="is-active" exact={true}>Property List</NavLink></Menu.Item>
+              <Menu.Item key="1"><NavLink to="/" activeClassName="is-active">Property List</NavLink></Menu.Item>
               <Menu.Item key="2"><NavLink to="/addProperty" activeClassName="is-active" exact={true}>New Property</NavLink></Menu.Item>
               <Menu.Item key="3"><NavLink to="/" activeClassName="is-active">Nav 3</NavLink></Menu.Item>
             </Menu>
