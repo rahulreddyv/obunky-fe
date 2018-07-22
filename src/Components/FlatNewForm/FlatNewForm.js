@@ -1,12 +1,36 @@
 import React, { Component } from 'react';
-import { Tabs } from 'antd';
-import { Form, Input, Radio, Button, DatePicker} from 'antd';
+import {  } from 'antd';
+import { Form, Input, Radio, Button, DatePicker, Tabs, Select} from 'antd';
 import './FlatNewForm.css';
 
 
 const FormItem = Form.Item;
+const Option = Select.Option;
+
+function handleChange(value) {
+  console.log(`selected ${value}`);
+}
+
+function handleBlur() {
+  console.log('blur');
+}
+
+function handleFocus() {
+  console.log('focus');
+}
 
 export default class FlatList extends Component {
+  constructor () {
+    super()
+    this.state = {
+      isHidden: true
+    }
+  }
+  toggleSecurityDeposit(){
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+  }
   render() {
     const RadioGroup = Radio.Group;
     const TabPane = Tabs.TabPane;
@@ -17,19 +41,11 @@ export default class FlatList extends Component {
       wrapperCol: { span: 14 },
     };
     return (
+      <div>
+      <h2>New Property Listing</h2>
       <Tabs defaultActiveKey="1">
-        <TabPane tab="Tab 1" key="1">
+        <TabPane tab="Basic Info" key="1">
           <Form>
-            <FormItem
-              {...formItemLayout}
-              label="I want to"
-            >
-              <RadioGroup>
-                <RadioButton value="a">Rent</RadioButton>
-                <RadioButton value="b">Sell</RadioButton>
-              </RadioGroup>
-          </FormItem>
-
           <FormItem
             {...formItemLayout}
             label="Property Type"
@@ -51,8 +67,7 @@ export default class FlatList extends Component {
             <RadioButton value="c">2 BHK</RadioButton>
             <RadioButton value="d">3 BHK</RadioButton>
             <RadioButton value="e">4 BHK</RadioButton>
-            <RadioButton value="f">5 BHK</RadioButton>
-            <RadioButton value="g">5+ BHK</RadioButton>
+            <RadioButton value="f">4+ BHK</RadioButton>
           </RadioGroup>
         </FormItem>
 
@@ -83,28 +98,81 @@ export default class FlatList extends Component {
 
         <FormItem
           {...formItemLayout}
-          label="Security Deposit"
+          label="Other Expenses"
         >
-          <Input />
+        <Select
+          showSearch
+          style={{ width: 200 }}
+          placeholder="None"
+          optionFilterProp="children"
+          onChange={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+        >
+          <Option value="jack">Jack</Option>
+          <Option value="lucy">Lucy</Option>
+          <Option value="tom">Tom</Option>
+        </Select>,
+        </FormItem>
+
+        <FormItem
+          {...formItemLayout}
+          label="Security Deposit"
+        > 
+            <RadioGroup defaultValue="b" onChange={this.toggleSecurityDeposit.bind(this)}>
+              <RadioButton value="a">Yes</RadioButton>
+              <RadioButton value="b">No</RadioButton>
+            </RadioGroup>
+          {!this.state.isHidden && <Input />}
         </FormItem>
 
         <FormItem
           {...formItemLayout}
           label="Sharing Type"
         >
-			<RadioGroup>
-				<RadioButton value="a">Single Sharing</RadioButton>
-				<RadioButton value="b">Double Sharing</RadioButton>
-				<RadioButton value="c">Triple Sharing</RadioButton>
-				<RadioButton value="c">Four Sharing</RadioButton>
-			</RadioGroup>
+        <RadioGroup>
+          <RadioButton value="a">Single Sharing</RadioButton>
+          <RadioButton value="b">Double Sharing</RadioButton>
+          <RadioButton value="c">Triple Sharing</RadioButton>
+          <RadioButton value="d">Four Sharing</RadioButton>
+        </RadioGroup>
         </FormItem>
 
         <FormItem
           {...formItemLayout}
-          label="Built Up Area"
+          label="Preferences"
         >
-          <Input />
+        <Select
+        mode="multiple"
+        style={{ width: '100%' }}
+        placeholder="Please select"
+        onChange={handleChange}
+        >
+          <Option value="Non Smoker">Non Smoker</Option>
+          <Option value="Non Alcoholic">Non Alcoholic</Option>
+          <Option value="Vegetarian">Vegetarian</Option>
+          <Option value="Non Vegetarian">Non Vegetarian</Option>
+        </Select>
+        </FormItem>
+
+        <FormItem
+          {...formItemLayout}
+          label="Aminities"
+        >
+        <Select
+        mode="multiple"
+        style={{ width: '100%' }}
+        placeholder="Please select"
+        onChange={handleChange}
+        >
+          <Option value="AC">AC</Option>
+          <Option value="Cooler">Cooler</Option>
+          <Option value="Washing Machine">Washing Machine</Option>
+          <Option value="Cot">Cot</Option>
+          <Option value="Kitchen Setup">Kitchen Setup</Option>
+          <Option value="Cook">Cook</Option>
+        </Select>
         </FormItem>
         <FormItem
           {...formItemLayout}
@@ -114,6 +182,7 @@ export default class FlatList extends Component {
       </Form>
     </TabPane>
   </Tabs>
+  </div>
     );
   }
 }

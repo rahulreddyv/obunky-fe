@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
-import FlatList from '../FlatList/FlatList';
+import MainList from '../MainList/MainList';
 import FlatDetail from '../FlatDetail/FlatDetail';
+import FlatList from '../FlatList/FlatList';
 
 export default class Dashboard extends Component {
     state = {
