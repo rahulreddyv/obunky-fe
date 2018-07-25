@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {  } from 'antd';
-import { Form, Input, Radio, Button, DatePicker, Tabs, Select} from 'antd';
+import { Form, Input, Radio, Button, DatePicker, Tabs, Select, Modal} from 'antd';
 import './FlatNewForm.css';
 
 
@@ -23,15 +23,46 @@ export default class FlatList extends Component {
   constructor () {
     super()
     this.state = {
-      isHidden: true
+      isHidden: true,
+      ModalText: 'Content of the modal',
+      visible: false,
+      confirmLoading: false,
     }
   }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  handleOk = () => {
+    this.setState({
+      ModalText: 'The modal will be closed after two seconds',
+      confirmLoading: true,
+    });
+    setTimeout(() => {
+      this.setState({
+        visible: false,
+        confirmLoading: false,
+      });
+    }, 2000);
+  }
+
+  handleCancel = () => {
+    console.log('Clicked cancel button');
+    this.setState({
+      visible: false,
+    });
+  }
+  
   toggleSecurityDeposit(){
     this.setState({
       isHidden: !this.state.isHidden
     })
   }
   render() {
+    const { visible, confirmLoading, ModalText } = this.state;  
     const RadioGroup = Radio.Group;
     const TabPane = Tabs.TabPane;
     const RadioButton = Radio.Button
@@ -172,8 +203,27 @@ export default class FlatList extends Component {
           <Option value="Cot">Cot</Option>
           <Option value="Kitchen Setup">Kitchen Setup</Option>
           <Option value="Cook">Cook</Option>
+          <Option value="Cook">Maid</Option>
         </Select>
         </FormItem>
+
+        <FormItem
+          {...formItemLayout}
+          label="Upload Photos"
+        >
+        <div>
+        <Button type="primary" onClick={this.showModal}>Upload</Button>
+        <Modal title="Title"
+          visible={visible}
+          onOk={this.handleOk}
+          confirmLoading={confirmLoading}
+          onCancel={this.handleCancel}
+        >
+          <p>{ModalText}</p>
+        </Modal>
+      </div>
+        </FormItem>
+
         <FormItem
           {...formItemLayout}
         >

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { List, Avatar, Icon } from 'antd';
-import { NavLink} from 'react-router-dom';
 
 const listData = [];
 for (let i = 0; i < 23; i++) {
@@ -21,6 +20,10 @@ const IconText = ({ type, text }) => (
 );
 
 export default class FlatList extends Component {
+onItemClick(item, e) {
+  console.log(item);
+}
+
   render() {
     return (
       <div style={{background: '#fff'}}>
@@ -28,27 +31,24 @@ export default class FlatList extends Component {
           itemLayout="vertical"
           size="large"
           pagination={{
-            onChange: (page) => {
-              console.log(page);
-            },
             pageSize: 3,
           }}
           dataSource={listData}
           footer={<div><b>ant design</b> footer part</div>}
           renderItem={item => (
-              <List.Item
-                onClick={this.onItemClick}
-                key={item.title}
-                actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
-                extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
-              >
-                <List.Item.Meta
-                  avatar={<Avatar src={item.avatar} />}
-                  title={<a href={item.href}>{item.title}</a>}
-                  description={item.description}
-                />
-                {item.content}
-              </List.Item>
+          <List.Item
+            onClick={this.onItemClick.bind(this, item.title)}
+            key={item.title}
+            actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
+            extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
+          >
+            <List.Item.Meta
+              avatar={<Avatar src={item.avatar} />}
+              title={<a href={item.href}>{item.title}</a>}
+              description={item.description}
+            />
+              {item.content}
+            </List.Item>
           )}
         />
       </div>
