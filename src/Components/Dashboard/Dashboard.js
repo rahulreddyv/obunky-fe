@@ -15,11 +15,10 @@ export default class Dashboard extends Component {
     }
 
     getUserList(){
-        fetch('http://192.168.99.102:8000/flats/?format=json')
-        .then(res => res.json())
+        axios.get('http://192.168.99.103:8000/flats/?format=json')
         .then(
             (res) => {
-                console.log(res);
+                this.setState({flats: res.data });
             },
         )
     }
@@ -29,7 +28,7 @@ export default class Dashboard extends Component {
             <div>
                 <Row gutter={16}>
                     <Col className="gutter-row" span={12}>
-                        <FlatList />
+                        <FlatList flats = {this.state.flats}/>
                     </Col>
                     <Col className="gutter-row" span={12}>
                         <FlatDetail />
