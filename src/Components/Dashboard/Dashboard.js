@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import FlatDetail from '../FlatDetail/FlatDetail';
 import FlatList from '../FlatList/FlatList';
+import axios from 'axios';
 
 export default class Dashboard extends Component {
     state = {
@@ -9,15 +10,19 @@ export default class Dashboard extends Component {
         jsonReturnedValue: null
     };
 
-    // componentDidMount(){
-    //     fetch('https://reqres.in/api/users?page=2')
-    //     .then(function(response) {
-    //     this.setState({
-    //     jsonReturnedValue: response.json()
-    //   }) 
-    //   console.log(this.state.jsonReturnedValue);
-    // })
-    // }
+    componentDidMount(){
+        this.getUserList();
+    }
+
+    getUserList(){
+        fetch('http://192.168.99.102:8000/flats/?format=json')
+        .then(res => res.json())
+        .then(
+            (res) => {
+                console.log(res);
+            },
+        )
+    }
 
     render() {
         return (

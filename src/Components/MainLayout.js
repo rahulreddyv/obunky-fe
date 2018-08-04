@@ -22,20 +22,31 @@ export default class MainLayout extends Component {
       <Layout style={{ minHeight: '100vh' }}>
         <Layout>
           <Header style={{ background: '#000', padding: 0 }}>
-          {/*Unable to center the nav elements*/}
-            <Menu
-              theme="dark"
-              mode="horizontal"
-              defaultSelectedKeys={['1']}
-              style={{
-                lineHeight: '64px',
-                position: 'relative',
-                justifyContent: 'center'
-              }}
-            >
-              <Menu.Item key="1"><NavLink to="/" activeClassName="is-active">Find a Flat</NavLink></Menu.Item>
-              <Menu.Item key="2"><NavLink to="/newProperty" activeClassName="is-active" exact={true}>New Property</NavLink></Menu.Item>
-            </Menu>
+			<div style={{display: 'inline-block'}}>
+				{/*Unable to center the nav elements*/}
+				<Menu
+					theme="dark"
+					mode="horizontal"
+					defaultSelectedKeys={['1']}
+					style={{
+						lineHeight: '64px',
+						position: 'relative'
+					}}
+				>
+					<Menu.Item key="1"><NavLink to="/" activeClassName="is-active">Find a Flat</NavLink></Menu.Item>
+					<Menu.Item key="logo" disabled={true}>
+						<div className='lowgo'
+						style={{
+							height: '32px',
+							background: 'rgba(255,255,255,.2)',
+							margin: '16px',
+							width: '120px'
+						}}
+						/>
+					</Menu.Item>
+					<Menu.Item key="2"><NavLink to="/newProperty" activeClassName="is-active" exact={true}>Rent a Flat</NavLink></Menu.Item>
+				</Menu>
+			</div>
           </Header>
           <Content style={{ margin: '24px 16px', padding: 24, minHeight: 280 }}>
             <SimpleContent />

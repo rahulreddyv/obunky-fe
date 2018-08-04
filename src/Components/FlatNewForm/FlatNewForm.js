@@ -203,7 +203,7 @@ export default class FlatList extends Component {
           <Option value="Cot">Cot</Option>
           <Option value="Kitchen Setup">Kitchen Setup</Option>
           <Option value="Cook">Cook</Option>
-          <Option value="Cook">Maid</Option>
+          <Option value="Maid">Maid</Option>
         </Select>
         </FormItem>
 
