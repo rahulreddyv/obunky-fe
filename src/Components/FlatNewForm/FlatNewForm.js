@@ -166,7 +166,7 @@ export default class FlatList extends Component {
           <RadioButton value="a">Single Sharing</RadioButton>
           <RadioButton value="b">Double Sharing</RadioButton>
           <RadioButton value="c">Triple Sharing</RadioButton>
-          <RadioButton value="d">Four Sharing</RadioButton>
+          <RadioButton value="d">3+ Sharing</RadioButton>
         </RadioGroup>
         </FormItem>
 
@@ -230,6 +230,9 @@ export default class FlatList extends Component {
           <Button>Continue</Button>
         </FormItem>
       </Form>
+    </TabPane>
+    <TabPane tab="More Info" key="2">
+      
     </TabPane>
   </Tabs>
   </div>

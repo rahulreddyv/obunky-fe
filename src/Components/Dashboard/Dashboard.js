@@ -5,10 +5,15 @@ import FlatList from '../FlatList/FlatList';
 import axios from 'axios';
 
 export default class Dashboard extends Component {
-    state = {
-        collapsed: false,
-        jsonReturnedValue: null
-    };
+    constructor(props){
+        super(props);
+        this.onItemClick = this.onItemClick.bind(this);
+        this.state = {
+            collapsed: false,
+            jsonReturnedValue: null,
+            selected: null
+        }
+    }
 
     componentDidMount(){
         this.getUserList();
@@ -23,15 +28,21 @@ export default class Dashboard extends Component {
         )
     }
 
+    onItemClick(id){
+        this.setState({
+            selected: id
+        });
+    }
+
     render() {
         return (
             <div>
                 <Row gutter={16}>
                     <Col className="gutter-row" span={12}>
-                        <FlatList flats = {this.state.flats}/>
+                        <FlatList flats = {this.state.flats} itemClick={this.onItemClick}/>
                     </Col>
                     <Col className="gutter-row" span={12}>
-                        <FlatDetail />
+                        <FlatDetail selected={this.state.selected}/>
                     </Col>
                 </Row>
             </div>
