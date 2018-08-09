@@ -32,6 +32,7 @@ export default class Dashboard extends Component {
         this.setState({
             selected: id
         });
+        console.log("Item actually clicked "+ id)
     }
 
     render() {
