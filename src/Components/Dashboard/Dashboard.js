@@ -20,7 +20,7 @@ export default class Dashboard extends Component {
     }
 
     getUserList(){
-        axios.get('http://192.168.99.103:8000/flats/?format=json')
+        axios.get('http://192.168.99.100:8000/flats/?format=json')
         .then(
             (res) => {
                 this.setState({flats: res.data });

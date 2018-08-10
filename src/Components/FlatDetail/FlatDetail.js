@@ -29,7 +29,7 @@ export default class FlatList extends Component {
 	}
 
 	updateState(id){
-		let url = 'http://192.168.99.103:8000/flats/'+id;
+		let url = 'http://192.168.99.100:8000/flats/'+id;
 		console.log("Actual item that was clicked is "+id);
 		axios.get(url)
         .then(
@@ -55,7 +55,7 @@ export default class FlatList extends Component {
 			<Row>
 				<Col span={12}>
 					<h3>Apartment</h3>
-					<h5>{this.state.flat.furnishing}</h5>
+					<h5>Furnished</h5>
 				</Col>	
 				<Col span={12}>
 					Monthly Rent
