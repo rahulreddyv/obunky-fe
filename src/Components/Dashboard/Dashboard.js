@@ -11,7 +11,8 @@ export default class Dashboard extends Component {
         this.state = {
             collapsed: false,
             jsonReturnedValue: null,
-            selected: null
+            selected: null,
+            flatData: null
         }
     }
 
@@ -32,10 +33,18 @@ export default class Dashboard extends Component {
         this.setState({
             selected: id
         });
-        console.log("Item actually clicked "+ id)
+        console.log("Item actually clicked "+ id);
+        let url = 'http://192.168.99.100:8000/flats/'+id;
+		axios.get(url)
+        .then(
+            (res) => {
+				this.setState({flatData: res.data });
+            },
+		)
     }
 
     render() {
+        const flatDetailComp = this.state.flatData?<FlatDetail flatData = {this.state.flatData} /> : ""
         return (
             <div>
                 <Row gutter={16}>
@@ -43,7 +52,7 @@ export default class Dashboard extends Component {
                         <FlatList flats = {this.state.flats} itemClick={this.onItemClick}/>
                     </Col>
                     <Col className="gutter-row" span={12}>
-                        <FlatDetail selected={this.state.selected}/>
+                        {flatDetailComp}
                     </Col>
                 </Row>
             </div>

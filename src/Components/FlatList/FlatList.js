@@ -29,28 +29,26 @@ export default class FlatList extends Component {
     return (
         <div style={{background: '#fff'}}>
             <List
-            itemLayout="vertical"
-            size="large"
-            pagination={{
-                pageSize: 3,
-            }}
-            dataSource={flats}
-            footer={<div><b>ant design</b> footer part</div>}
-            renderItem={item => (
-            <List.Item
-                onClick={this.onItemClick.bind(this, item.id)}
-                key={item.id}
-                actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
-                extra={<img width={272} alt="logo" src={item.photo_urls} />}
-            >
+                itemLayout="vertical"
+                size="large"
+                pagination={{
+                    pageSize: 3,
+                }}
+                dataSource={flats}
+                renderItem={item => (
+                <List.Item
+                    onClick={this.onItemClick.bind(this, item.id)}
+                    key={item.id}
+                    actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
+                >
                 <List.Item.Meta
-                avatar={<Avatar src={item.photo_urls} />}
-                title={<a href={item.href}>{item.property_type}</a>}
-                description={item.furnishing}
+                    avatar={<Avatar src={item.photo_urls} />}
+                    title={<a href={item.href}>{item.property_type}</a>}
+                    description={item.furnishing}
                 />
-                {item.content}
+                    {item.content}
                 </List.Item>
-            )}
+                )}
             />
       </div>
     );
