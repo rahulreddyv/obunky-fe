@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import {  } from 'antd';
-import { Form, Input, Radio, Button, DatePicker, Tabs, Select, Modal} from 'antd';
+import { Form, Input, Radio, Button, DatePicker, Tabs, Select} from 'antd';
 import './FlatNewForm.css';
-
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -19,7 +17,7 @@ function handleFocus() {
   console.log('focus');
 }
 
-export default class FlatList extends Component {
+class FlatNewForm extends Component {
   constructor () {
     super()
     this.state = {
@@ -61,8 +59,18 @@ export default class FlatList extends Component {
       isHidden: !this.state.isHidden
     })
   }
+
+  handleSubmit = (e) => {
+	e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      }
+    });
+  }
+
   render() {
-    const { visible, confirmLoading, ModalText } = this.state;  
+	const {getFieldDecorator} = this.props.form;
     const RadioGroup = Radio.Group;
     const TabPane = Tabs.TabPane;
     const RadioButton = Radio.Button
@@ -70,171 +78,125 @@ export default class FlatList extends Component {
     const formItemLayout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 14 },
-    };
+	};
+	
+	const config = {
+		rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+	  };
     return (
-      <div>
-      <h2>New Property Listing</h2>
-      <Tabs defaultActiveKey="1">
-        <TabPane tab="Basic Info" key="1">
-          <Form>
-          <FormItem
-            {...formItemLayout}
-            label="Property Type"
-          >
-            <RadioGroup>
-              <RadioButton value="a">Apartment</RadioButton>
-              <RadioButton value="b">Independent House</RadioButton>
-              <RadioButton value="c">Independent Floor</RadioButton>
-            </RadioGroup>
-        </FormItem>
+    <div>
+		<h2>New Property Listing</h2>
+		<Tabs defaultActiveKey="1">
+			<TabPane tab="Basic Info" key="1">
+				<Form onSubmit= {this.handleSubmit}>
+					<FormItem
+						{...formItemLayout}
+						label="Property Type"
+					>
+					{getFieldDecorator('property_type')(
+						<RadioGroup>
+							<RadioButton value="IA">Apartment</RadioButton>
+							<RadioButton value="IH">Independent House</RadioButton>
+							<RadioButton value="GS">Gated Society</RadioButton>
+						</RadioGroup>
+					)}
+					</FormItem>
+					<FormItem
+					{...formItemLayout}
+					label="Select BHK"
+					>
+						{getFieldDecorator('bhk')(
+							<RadioGroup buttonStyle="solid">
+								<RadioButton value="0">1 RK</RadioButton>
+								<RadioButton value="1">1 BHK</RadioButton>
+								<RadioButton value="2">2 BHK</RadioButton>
+								<RadioButton value="3">3 BHK</RadioButton>
+								<RadioButton value="4">4 BHK</RadioButton>
+								<RadioButton value="5">4+ BHK</RadioButton>
+							</RadioGroup>
+						)}
+					</FormItem>
 
-        <FormItem
-          {...formItemLayout}
-          label="Select BHK"
-        >
-          <RadioGroup buttonStyle="solid">
-            <RadioButton value="a">1 RK</RadioButton>
-            <RadioButton value="b">1 BHK</RadioButton>
-            <RadioButton value="c">2 BHK</RadioButton>
-            <RadioButton value="d">3 BHK</RadioButton>
-            <RadioButton value="e">4 BHK</RadioButton>
-            <RadioButton value="f">4+ BHK</RadioButton>
-          </RadioGroup>
-        </FormItem>
+					<FormItem
+					{...formItemLayout}
+					label="Furnished"
+					>
+					{getFieldDecorator('furnishing')(
+					<RadioGroup>
+						<RadioButton value="FF">Fully Furnished</RadioButton>
+						<RadioButton value="SF">Semi Furnished</RadioButton>
+						<RadioButton value="UN">Unfurnished</RadioButton>
+					</RadioGroup>)}
+					</FormItem>
 
-        <FormItem
-          {...formItemLayout}
-          label="Furnished"
-        >
-          <RadioGroup>
-            <RadioButton value="a">Fully Furnished</RadioButton>
-            <RadioButton value="b">Semi Furnished</RadioButton>
-            <RadioButton value="c">Unfurnished</RadioButton>
-          </RadioGroup>
-        </FormItem>
+					<FormItem
+					{...formItemLayout}
+					label="Available From"
+					>
+						{getFieldDecorator('available_from', config)(
+							<DatePicker />
+						)}
+					</FormItem>
 
-        <FormItem
-          {...formItemLayout}
-          label="Available From"
-        >
-          <DatePicker />
-        </FormItem>
+					<FormItem
+					{...formItemLayout}
+					label="Monthly Rent"
+					>
+						{getFieldDecorator('monthly_rent')(
+							<Input />
+						)}
+					</FormItem>
 
-        <FormItem
-          {...formItemLayout}
-          label="Monthly Rent"
-        >
-          <Input />
-        </FormItem>
+					<FormItem
+						{...formItemLayout}
+						label="Security Deposit"
+						> 
+						{getFieldDecorator('security_deposit')(
+							<Input />
+						)}
+					</FormItem>
 
-        <FormItem
-          {...formItemLayout}
-          label="Other Expenses"
-        >
-        <Select
-          showSearch
-          style={{ width: 200 }}
-          placeholder="None"
-          optionFilterProp="children"
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-        >
-          <Option value="jack">Jack</Option>
-          <Option value="lucy">Lucy</Option>
-          <Option value="tom">Tom</Option>
-        </Select>,
-        </FormItem>
+					<FormItem
+						{...formItemLayout}
+						label="Sharing Type"
+						>
+						{getFieldDecorator('sharing_type')(
+							<RadioGroup>
+								<RadioButton value="1">Single Sharing</RadioButton>
+								<RadioButton value="2">Double Sharing</RadioButton>
+								<RadioButton value="3">Triple Sharing</RadioButton>
+								<RadioButton value="n">3+ Sharings</RadioButton>
+							</RadioGroup>
+						)}
+					</FormItem>
 
-        <FormItem
-          {...formItemLayout}
-          label="Security Deposit"
-        > 
-            <RadioGroup defaultValue="b" onChange={this.toggleSecurityDeposit.bind(this)}>
-              <RadioButton value="a">Yes</RadioButton>
-              <RadioButton value="b">No</RadioButton>
-            </RadioGroup>
-          {!this.state.isHidden && <Input />}
-        </FormItem>
-
-        <FormItem
-          {...formItemLayout}
-          label="Sharing Type"
-        >
-        <RadioGroup>
-          <RadioButton value="a">Single Sharing</RadioButton>
-          <RadioButton value="b">Double Sharing</RadioButton>
-          <RadioButton value="c">Triple Sharing</RadioButton>
-          <RadioButton value="d">3+ Sharings</RadioButton>
-        </RadioGroup>
-        </FormItem>
-
-        <FormItem
-          {...formItemLayout}
-          label="Preferences"
-        >
-        <Select
-        mode="multiple"
-        style={{ width: '100%' }}
-        placeholder="Please select"
-        onChange={handleChange}
-        >
-          <Option value="Non Smoker">Non Smoker</Option>
-          <Option value="Non Alcoholic">Non Alcoholic</Option>
-          <Option value="Vegetarian">Vegetarian</Option>
-          <Option value="Non Vegetarian">Non Vegetarian</Option>
-        </Select>
-        </FormItem>
-
-        <FormItem
-          {...formItemLayout}
-          label="Aminities"
-        >
-        <Select
-        mode="multiple"
-        style={{ width: '100%' }}
-        placeholder="Please select"
-        onChange={handleChange}
-        >
-          <Option value="AC">AC</Option>
-          <Option value="Cooler">Cooler</Option>
-          <Option value="Washing Machine">Washing Machine</Option>
-          <Option value="Cot">Cot</Option>
-          <Option value="Kitchen Setup">Kitchen Setup</Option>
-          <Option value="Cook">Cook</Option>
-          <Option value="Maid">Maid</Option>
-        </Select>
-        </FormItem>
-
-        <FormItem
-          {...formItemLayout}
-          label="Upload Photos"
-        >
-        <div>
-        <Button type="primary" onClick={this.showModal}>Upload</Button>
-        <Modal title="Title"
-          visible={visible}
-          onOk={this.handleOk}
-          confirmLoading={confirmLoading}
-          onCancel={this.handleCancel}
-        >
-          <p>{ModalText}</p>
-        </Modal>
-      </div>
-        </FormItem>
-
-        <FormItem
-          {...formItemLayout}
-        >
-          <Button>Continue</Button>
-        </FormItem>
-      </Form>
-    </TabPane>
-    <TabPane tab="More Info" key="2">
-    </TabPane>
-  </Tabs>
-  </div>
+					<FormItem
+					{...formItemLayout}
+					label="Preferences"
+					>
+					{getFieldDecorator('preferences')(
+						<Select
+						mode="multiple"
+						style={{ width: '100%' }}
+						placeholder="Please select"
+						onChange={handleChange}
+						>
+							<Option value="S">No Smoking</Option>
+							<Option value="A">No Alcohol</Option>
+							<Option value="V">Vegetarian</Option>
+						</Select>
+					)}
+					</FormItem><FormItem wrapperCol={{ span: 12, offset: 6 }}>
+						<Button type="primary" htmlType="submit">Submit</Button>
+			   		</FormItem>
+				</Form>
+			</TabPane>
+		</Tabs>
+	  </div>
     );
   }
 }
+
+const NewFlatForm = Form.create()(FlatNewForm);
+
+export default NewFlatForm;
