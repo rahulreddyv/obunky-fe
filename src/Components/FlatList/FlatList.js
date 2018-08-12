@@ -23,6 +23,38 @@ export default class FlatList extends Component {
         this.props.itemClick(id)
     }
 
+    //Function to return the BHK based on the value received from the backend
+    getFlatTitle(prop){
+        if(prop == 0){
+            return "1 RK";
+        }
+        else if(prop>0 && prop<=4){
+            return prop+" BHK";
+        }
+        else if(prop>4){
+            return "4+ BHK";
+        }
+        else{
+            return "";
+        }
+    }
+
+    //Function to return furnishing based on the value received from the backend
+    getFlatFurnishing(val){
+        if(val == "FF"){
+            return "Fully Furnished";
+        }
+        else if(val == "SF"){
+            return "Semi Furnished";
+        }
+        else if(val == "UN"){
+            return "Unfurnished";
+        }
+        else{
+            return "";
+        }
+    }
+
   render() {
     const flats = this.props.flats;
     console.log(flats)
@@ -32,7 +64,7 @@ export default class FlatList extends Component {
                 itemLayout="vertical"
                 size="large"
                 pagination={{
-                    pageSize: 3,
+                    pageSize: 4,
                 }}
                 dataSource={flats}
                 renderItem={item => (
@@ -42,9 +74,8 @@ export default class FlatList extends Component {
                     actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
                 >
                 <List.Item.Meta
-                    avatar={<Avatar src={item.photo_urls} />}
-                    title={<a href={item.href}>{item.property_type}</a>}
-                    description={item.furnishing}
+                    title={<h1 style = {{fontSize:'25px'}}>{this.getFlatTitle(item.bhk)}</h1>}
+                    description={<h2>Rs. {item.monthly_rent}</h2>}
                 />
                     {item.content}
                 </List.Item>
