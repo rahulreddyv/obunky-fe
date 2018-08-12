@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Input, Radio, Button, DatePicker, Tabs, Select} from 'antd';
+import axios from 'axios'
 import './FlatNewForm.css';
+import moment from 'moment';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -61,10 +63,30 @@ class FlatNewForm extends Component {
   }
 
   handleSubmit = (e) => {
+	
 	e.preventDefault();
+
+	axios.post('http://192.168.99.100:8000/flats/', {
+		property_type: this.props.form.getFieldsValue().property_type,
+		bhk: this.props.form.getFieldsValue().bhk,
+		available_from: moment(this.props.form.getFieldsValue().available_from).format('YYYY-MM-DD'),
+		sharing_type:  this.props.form.getFieldsValue().sharing_type,
+		monthly_rent: this.props.form.getFieldsValue().monthly_rent,
+		securty_deposit: this.props.form.getFieldsValue().security_deposit,
+		furnishing: this.props.form.getFieldsValue().furnishing,
+		preferences: this.props.form.getFieldsValue().preferences,
+		posted_by: 1
+	})
+	.then(function(response){
+		console.log(response);
+	})
+	.catch(function(error){
+		console.log(error);
+	})
+
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        console.log('Received values of form: ', moment(this.props.form.getFieldsValue().available_from).format('YYYY-MM-DD'));
       }
     });
   }
