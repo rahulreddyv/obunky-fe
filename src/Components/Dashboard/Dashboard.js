@@ -21,7 +21,7 @@ export default class Dashboard extends Component {
     }
 
     getUserList(){
-        axios.get('http://192.168.99.100:8000/flats/?format=json')
+        axios.get('http://192.168.99.104:8000/flats/?format=json')
         .then(
             (res) => {
                 this.setState({flats: res.data });
@@ -34,7 +34,7 @@ export default class Dashboard extends Component {
             selected: id
         });
         console.log("Item actually clicked "+ id);
-        let url = 'http://192.168.99.100:8000/flats/'+id;
+        let url = 'http://192.168.99.104:8000/flats/'+id;
 		axios.get(url)
         .then(
             (res) => {

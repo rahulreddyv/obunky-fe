@@ -1,5 +1,5 @@
 # base image
-FROM node:10.6.0
+FROM node:10.6.0 as builder
 
 # set working directory
 RUN mkdir /usr/src/app
@@ -10,16 +10,19 @@ ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
 COPY package.json /usr/src/app/package.json
+
 RUN npm install
 RUN npm install react-scripts@1.1.1 -g
-RUN yarn add antd 
+RUN yarn add antd
 
-#install a server (Recommended by create-react-app)
-# RUN npm install -g serve
-# Run serve when the image is run.
-# CMD serve -s build
-# Let Docker know about the port that serve runs on.
-# EXPOSE 5000
+COPY . /usr/src/app
 
-# start app
-CMD ["yarn", "start"]
+RUN npm run build
+
+#production environment
+FROM nginx:1.13.9-alpine
+RUN rm -rf /etc/nginx/conf.d
+COPY conf /etc/nginx
+COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
