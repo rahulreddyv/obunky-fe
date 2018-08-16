@@ -21,7 +21,7 @@ export default class Dashboard extends Component {
     }
 
     getUserList(){
-        axios.get('https://obunky.com/flats/?format=json')
+        axios.get('https://backend.obunky.com/flats/?format=json')
         .then(
             (res) => {
                 this.setState({flats: res.data });
@@ -34,7 +34,7 @@ export default class Dashboard extends Component {
             selected: id
         });
         console.log("Item actually clicked "+ id);
-        let url = 'https://obunky.com/flats/'+id;
+        let url = 'https://backend.obunky.com/flats/'+id;
 		axios.get(url)
         .then(
             (res) => {

@@ -66,7 +66,7 @@ class FlatNewForm extends Component {
 	
 	e.preventDefault();
 
-	axios.post('https://obunky.com/flats/', {
+	axios.post('https://backend.obunky.com/flats/', {
 		property_type: this.props.form.getFieldsValue().property_type,
 		bhk: this.props.form.getFieldsValue().bhk,
 		available_from: moment(this.props.form.getFieldsValue().available_from).format('YYYY-MM-DD'),
