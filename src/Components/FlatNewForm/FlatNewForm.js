@@ -66,7 +66,7 @@ class FlatNewForm extends Component {
 	
 	e.preventDefault();
 
-	axios.post('http://192.168.99.104:8000/flats/', {
+	axios.post('https://obunky.com/flats/', {
 		property_type: this.props.form.getFieldsValue().property_type,
 		bhk: this.props.form.getFieldsValue().bhk,
 		available_from: moment(this.props.form.getFieldsValue().available_from).format('YYYY-MM-DD'),
@@ -86,7 +86,7 @@ class FlatNewForm extends Component {
 
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', moment(this.props.form.getFieldsValue().available_from).format('YYYY-MM-DD'));
+        console.log('Received values of form: ', this.props.form.getFieldsValue());
       }
     });
   }
