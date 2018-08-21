@@ -9,6 +9,7 @@ export default class AddProperty extends Component {
     };
 
     render(){
+        const flatDetailComp = this.state.flatData ? <FlatDetail flatData = {this.state.flatData} /> : ""
         return(
             <div>
                 <Row>
@@ -16,7 +17,7 @@ export default class AddProperty extends Component {
                         <FlatNewForm />
                     </Col>
                     <Col className="gutter-row" span={12}>
-                        <FlatDetail />
+                        {flatDetailComp}
                     </Col>
                 </Row>
             </div>
