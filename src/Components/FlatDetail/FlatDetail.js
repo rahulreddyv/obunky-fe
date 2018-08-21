@@ -3,7 +3,7 @@ import { Carousel, Card, Row, Col } from 'antd';
 import './FlatDetail.css';
 
 const flatStatus = (data) => {
-	if(data == 'A'){
+	if(data === 'A'){
 		return "Available";
 	}
 }
@@ -26,7 +26,7 @@ export default class FlatList extends Component {
 					<Col span={12}>
 						<h3>Apartment</h3>
 						<h5>{flatData.bhk} BHK</h5>
-					</Col>	
+					</Col>
 					<Col span={12}>
 						<h3>Monthly Rent</h3>
 						<h5>{flatData.monthly_rent}</h5>

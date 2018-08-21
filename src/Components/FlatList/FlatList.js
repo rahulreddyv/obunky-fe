@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, Avatar, Icon } from 'antd';
+import { List, Icon } from 'antd';
 
 const listData = [];
 listData.push({
@@ -25,7 +25,7 @@ export default class FlatList extends Component {
 
     //Function to return the BHK based on the value received from the backend
     getFlatTitle(prop){
-        if(prop == 0){
+        if(prop === 0){
             return "1 RK";
         }
         else if(prop>0 && prop<=4){
@@ -41,13 +41,13 @@ export default class FlatList extends Component {
 
     //Function to return furnishing based on the value received from the backend
     getFlatFurnishing(val){
-        if(val == "FF"){
+        if(val === "FF"){
             return "Fully Furnished";
         }
-        else if(val == "SF"){
+        else if(val === "SF"){
             return "Semi Furnished";
         }
-        else if(val == "UN"){
+        else if(val === "UN"){
             return "Unfurnished";
         }
         else{
@@ -68,17 +68,24 @@ export default class FlatList extends Component {
                 }}
                 dataSource={flats}
                 renderItem={item => (
-                <List.Item
-                    onClick={this.onItemClick.bind(this, item.id)}
-                    key={item.id}
-                    actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
-                >
-                <List.Item.Meta
-                    title={<h1 style = {{fontSize:'25px'}}>{this.getFlatTitle(item.bhk)}</h1>}
-                    description={<h2>Rs. {item.monthly_rent}</h2>}
-                />
-                    {item.content}
-                </List.Item>
+                    <List.Item
+                        onClick={this.onItemClick.bind(this, item.id)}
+                        key={item.id}
+                        actions={[
+                          <IconText type="star-o" text="156" />,
+                          <IconText type="like-o" text="156" />,
+                          <IconText type="message" text="2" />
+                        ]}
+                    >
+                        <List.Item.Meta
+                            title={
+                              <h1 style = {{fontSize:'25px'}} >
+                                {this.getFlatTitle(item.bhk)}
+                              </h1>}
+                            description={<h2>Rs. {item.monthly_rent}</h2>}
+                        />
+                        {item.content}
+                    </List.Item>
                 )}
             />
       </div>

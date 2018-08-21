@@ -44,7 +44,7 @@ export default class Dashboard extends Component {
     }
 
     render() {
-        const flatDetailComp = this.state.flatData?<FlatDetail flatData = {this.state.flatData} /> : ""
+        const flatDetailComp = this.state.flatData ? <FlatDetail flatData = {this.state.flatData} /> : ""
         return (
             <div>
                 <Row gutter={16}>

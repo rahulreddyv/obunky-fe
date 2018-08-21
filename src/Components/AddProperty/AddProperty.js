@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import FlatNewForm from '../FlatNewForm/FlatNewForm';
-import FlatPreview from '../FlatPreview/FlatPreview';
+import FlatDetail from '../FlatDetail/FlatDetail';
 
 export default class AddProperty extends Component {
     state = {
@@ -16,7 +16,7 @@ export default class AddProperty extends Component {
                         <FlatNewForm />
                     </Col>
                     <Col className="gutter-row" span={12}>
-                        <FlatPreview />
+                        <FlatDetail />
                     </Col>
                 </Row>
             </div>
