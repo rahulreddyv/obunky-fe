@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, Avatar, Icon } from 'antd';
+import { List, Icon } from 'antd';
 import FlexView from 'react-flexview';
 import './FlatList.css';
 
@@ -27,7 +27,7 @@ export default class FlatList extends Component {
 
     //Function to return the BHK based on the value received from the backend
     getFlatTitle(prop){
-        if(prop == 0){
+        if(prop === 0){
             return "1 RK";
         }
         else if(prop>0 && prop<=4){
@@ -43,13 +43,13 @@ export default class FlatList extends Component {
 
     //Function to return furnishing based on the value received from the backend
     getFlatFurnishing(val){
-        if(val == "FF"){
+        if(val === "FF"){
             return "Fully Furnished";
         }
-        else if(val == "SF"){
+        else if(val === "SF"){
             return "Semi Furnished";
         }
-        else if(val == "UN"){
+        else if(val === "UN"){
             return "Unfurnished";
         }
         else{

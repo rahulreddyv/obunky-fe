@@ -21,7 +21,7 @@ export default class Dashboard extends Component {
     }
 
     getUserList(){
-        axios.get('http://192.168.99.104:8000/flats/?format=json')
+        axios.get('https://backend.obunky.com/flats/?format=json')
         .then(
             (res) => {
                 this.setState({flats: res.data });
@@ -34,7 +34,7 @@ export default class Dashboard extends Component {
             selected: id
         });
         console.log("Item actually clicked "+ id);
-        let url = 'http://192.168.99.104:8000/flats/'+id;
+        let url = 'https://backend.obunky.com/flats/'+id;
 		axios.get(url)
         .then(
             (res) => {
@@ -44,7 +44,7 @@ export default class Dashboard extends Component {
     }
 
     render() {
-        const flatDetailComp = this.state.flatData?<FlatDetail flatData = {this.state.flatData} /> : ""
+        const flatDetailComp = this.state.flatData ? <FlatDetail flatData = {this.state.flatData} /> : ""
         return (
             <div>
                 <Row gutter={16}>

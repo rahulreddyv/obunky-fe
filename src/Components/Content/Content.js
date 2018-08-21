@@ -15,8 +15,7 @@ export default class SimpleContent extends Component {
         <Route path="/" component={Dashboard} exact={true}/>
         <Route path="/newProperty" component={AddListing} exact={true}/>
         <Route path="/login" component={LoginPage} exact={true} />
-      </div> 
+      </div>
     );
   }
 }
-  
