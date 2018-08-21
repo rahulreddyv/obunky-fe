@@ -105,8 +105,8 @@ export default class FlatList extends Component {
                     </FlexView>
                     <FlexView column marginLeft="auto" marginRight="10vh" style={{"line-height":"1.4em"}}>
                         <h2 style = {{fontSize:'20px'}}>Rs. {item.monthly_rent}</h2>
-                        <h4>Per month</h4>
-                        <h4>Available From:</h4>
+                        <h5>Per month</h5>
+                        <h5>Available From:</h5>
                         <h2 style = {{fontSize:'20px'}}>{item.available_from}</h2>
                     </FlexView>
                     </FlexView>
