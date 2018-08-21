@@ -1,0 +1,19 @@
+.itemRow{display: flex; flex-direction: row; justify-content: center}
+.rowC{display:flex; flex-direction:row;};
+.rentDetails{line-height: 1.7em};
+.roomDetails{justify-content: center;};
+
+.flatListRow{
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.flatItemImage{
+    object-fit: contain;
+}
+
+.flatListPhoto{
+    width: 50%;
+    height: auto;
+}
