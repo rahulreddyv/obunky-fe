@@ -13,6 +13,7 @@ COPY package.json /usr/src/app/package.json
 RUN npm install
 RUN npm install react-scripts@1.1.1 -g
 RUN yarn add antd 
+RUN npm install react-flexview
 
 #install a server (Recommended by create-react-app)
 # RUN npm install -g serve

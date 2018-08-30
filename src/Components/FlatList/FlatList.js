@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { List, Icon } from 'antd';
+import FlexView from 'react-flexview';
+import './FlatList.css';
 
 const listData = [];
 listData.push({
@@ -55,6 +57,24 @@ export default class FlatList extends Component {
         }
     }
 
+    getRoomSharing(val){
+        if(val == "1"){
+            return "1 Sharing";
+        }
+        else if(val == "2"){
+            return "2 Sharing";
+        }
+        else if(val == "3"){
+            return "3 Sharing";
+        }
+        else if(val>3){
+            return val+" Sharing";
+        }
+        else{
+            return "";
+        }
+    }
+
   render() {
     const flats = this.props.flats;
     console.log(flats)
@@ -64,27 +84,33 @@ export default class FlatList extends Component {
                 itemLayout="vertical"
                 size="large"
                 pagination={{
-                    pageSize: 4,
+                    pageSize: 3,
                 }}
                 dataSource={flats}
                 renderItem={item => (
-                    <List.Item
-                        onClick={this.onItemClick.bind(this, item.id)}
-                        key={item.id}
-                        actions={[
-                          <IconText type="star-o" text={item.nfavs} />,
-                          <IconText type="message" text={item.nconversations} />
-                        ]}
-                    >
-                        <List.Item.Meta
-                            title={
-                              <h1 style = {{fontSize:'25px'}} >
-                                {this.getFlatTitle(item.bhk)}
-                              </h1>}
-                            description={<h2>Rs. {item.monthly_rent}</h2>}
-                        />
-                        {item.content}
-                    </List.Item>
+                <List.Item
+                    onClick={this.onItemClick.bind(this, item.id)}
+                    key={item.id}
+                >
+                <List.Item.Meta
+                />
+                <FlexView className="flatListRow">
+                    <FlexView>
+                        <img src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" style={{"height":"120px", "marginLeft":"20px", "marginTop": "auto", "marginBottom":"auto"}}></img>
+                    </FlexView>
+                    <FlexView column marginLeft="auto" marginRight="auto">
+                        <h2 style = {{fontSize:'20px'}}>{this.getRoomSharing(item.sharing_type)}</h2>
+                        <h1 style = {{fontSize:'20px'}}>{this.getFlatTitle(item.bhk)}</h1>
+                        <h2 style = {{fontSize:'20px'}}>Location</h2>
+                    </FlexView>
+                    <FlexView column marginLeft="auto" marginRight="10vh" style={{"line-height":"1.4em"}}>
+                        <h2 style = {{fontSize:'20px'}}>Rs. {item.monthly_rent}</h2>
+                        <h5>Per month</h5>
+                        <h5>Available From:</h5>
+                        <h2 style = {{fontSize:'20px'}}>{item.available_from}</h2>
+                    </FlexView>
+                    </FlexView>
+                </List.Item>
                 )}
             />
       </div>
