@@ -72,9 +72,8 @@ export default class FlatList extends Component {
                         onClick={this.onItemClick.bind(this, item.id)}
                         key={item.id}
                         actions={[
-                          <IconText type="star-o" text="156" />,
-                          <IconText type="like-o" text="156" />,
-                          <IconText type="message" text="2" />
+                          <IconText type="star-o" text={item.nfavs} />,
+                          <IconText type="message" text={item.nconversations} />
                         ]}
                     >
                         <List.Item.Meta
