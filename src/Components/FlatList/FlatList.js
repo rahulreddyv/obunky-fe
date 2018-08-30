@@ -88,21 +88,21 @@ export default class FlatList extends Component {
                   >
                     <List.Item.Meta/>
                     <FlexView className="flatListRow">
-                        <FlexView>
-                            <img src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" style={{"height":"120px", "marginLeft":"20px", "marginTop": "auto", "marginBottom":"auto"}}></img>
-                        </FlexView>
-                        <FlexView column marginLeft="auto" marginRight="auto">
-                            <h2 style = {{fontSize:'20px'}}>{this.getRoomSharing(item.sharing_type)}</h2>
-                            <h1 style = {{fontSize:'20px'}}>{this.getFlatTitle(item.bhk)}</h1>
-                            <h2 style = {{fontSize:'20px'}}>Location</h2>
-                        </FlexView>
-                        <FlexView column marginLeft="auto" marginRight="10vh" style={{"line-height":"1.4em"}}>
-                            <h2 style = {{fontSize:'20px'}}>Rs. {item.monthly_rent}</h2>
-                            <h5>Per month</h5>
-                            <h5>Available From:</h5>
-                            <h2 style = {{fontSize:'20px'}}>{item.available_from}</h2>
-                        </FlexView>
-                        </FlexView>
+                      <FlexView>
+                          <img src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" style={{"height":"120px", "marginLeft":"20px", "marginTop": "auto", "marginBottom":"auto"}}></img>
+                      </FlexView>
+                      <FlexView column marginLeft="auto" marginRight="auto">
+                          <h2 style = {{fontSize:'20px'}}>{this.getRoomSharing(item.sharing_type)}</h2>
+                          <h1 style = {{fontSize:'20px'}}>{this.getFlatTitle(item.bhk)}</h1>
+                          <h2 style = {{fontSize:'20px'}}>Location</h2>
+                      </FlexView>
+                      <FlexView column marginLeft="auto" marginRight="10vh" style={{"line-height":"1.4em"}}>
+                          <h2 style = {{fontSize:'20px'}}>Rs. {item.monthly_rent}</h2>
+                          <h5>Per month</h5>
+                          <h5>Available From:</h5>
+                          <h2 style = {{fontSize:'20px'}}>{item.available_from}</h2>
+                      </FlexView>
+                    </FlexView>
                   </List.Item>
                 )}
             />
