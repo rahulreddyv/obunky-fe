@@ -4,7 +4,7 @@ import Dashboard from '../Dashboard/Dashboard';
 import AddListing from '../AddProperty/AddProperty';
 import LoginPage from '../LoginPage/LoginPage';
 
-export default class SimpleContent extends Component {
+export default class RouterContent extends Component {
   state = {
     collapsed: false,
   };

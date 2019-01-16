@@ -5,11 +5,12 @@ import FlatDetail from '../FlatDetail/FlatDetail';
 
 export default class AddProperty extends Component {
     state = {
-      collapsed: false,
+        collapsed: false,
+        flatData: {}
     };
 
     render(){
-        const flatDetailComp = this.state.flatData ? <FlatDetail flatData = {this.state.flatData} /> : ""
+        const flatDetailComp = this.state.flatData !== {} ? <FlatDetail flatData = {this.state.flatData} /> : "";
         return(
             <div>
                 <Row>
